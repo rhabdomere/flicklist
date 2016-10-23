@@ -12,6 +12,14 @@ add a selector for elements with class "item-watchlist"
 give these elements a display property of inline-block
 and then style them as shown in the example (padding, margin, background, etc)
 */
+.item-watchlist {
+	display: inline-block;
+	background-color: orange;
+	padding: 60px;
+	margin: 2px 5px 2px 2px;
+	color: white;
+
+}
 
 
 /*
@@ -21,6 +29,9 @@ Hint: just apply the style using a parent selector, and then all
 descendent elements will automatically inherit the same styles
 */
 
+section {
+	color: gray;
+}
 
 #big-header {
 	background: gray;
@@ -53,8 +64,12 @@ button, input[type="submit"] {
 	border-width: 0px;
 	/*
 	TODO 7
+	note: the "button, input[type="submit"] specify buttons and the search button, i.e., "," means two parallel things
 	give these buttons some padding, and color them orange with white text
 	*/
+	color: white;
+	background-color: orange;
+	padding: 10px;
 }
 
 button:disabled {
