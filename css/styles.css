@@ -5,6 +5,10 @@ TODO 2c
 Customize the .jumbotron class to have centered text instead of left-aligned
 Also change its bottom margin to 1%
 */
+.jumbotron {
+	text-align: center;
+	margin: 1%;
+}
 
 
 /*
@@ -14,6 +18,14 @@ Give the Watchlist items some styles:
 - a little bit of margin on the bottom and right edges
 - no padding
 */
+#section-watchlist li {
+	width: 160px;
+	margin-bottom: 1%;
+	margin-right: 1%;
+	padding: 0px;
+}
+
+
 
 
 /*
@@ -21,21 +33,25 @@ TODO 2j
 The "I watched it" button should fill the entire width of its container, 
 and should be 10px below the neighbor element above it
 */
-
+#section-watchlist ul li button {
+	width: 100%;
+	margin-top: 10px;
+}
 
 /*
 TODO 3c
 Apply text-align: center; to the watchlist
 */
-
-
+#section-watchlist ul {
+	text-align: center;
+}
 
 .main-content {
 	color: gray;
 }
 
 #section-browse {
-	background: black;	
+	background: black;
 }
 
 #section-browse form {
@@ -55,28 +71,3 @@ section {
 }
 
 
-/*
-TODO 5
-Delete everything else below! 
-The Bootstrap classes have made this stuff no longer relevant
-*/
-
-ul {
-	padding-left: 0px;
-}
-
-button:disabled {
-	opacity: 0.5;
-}
-
-button, input[type="submit"] {
-	padding: 10px;
-	background: orange;
-	border-width: 0px;
-	color: white;
-}
-
-#section-browse li {
-	margin-bottom: 40px;
-	list-style: none;
-}
