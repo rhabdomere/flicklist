@@ -85,7 +85,6 @@ function render() {
     var button=$("<button class='btn btn-danger'></button>").text("I watched it")
         .click(function(){
           model.watchlistItems.splice(index, 1);
-
           render();
         });
 
