@@ -8,7 +8,7 @@ var model = {
 
 var api = {
   root: "https://api.themoviedb.org/3",
-  token: "TODO", // TODO 0 add your api key
+  token: "dee9b25908886e45b10ca7c58be38df1", // TODO 0 add your api key
   /**
    * Given a movie object, returns the url to its poster image
    */
@@ -28,7 +28,7 @@ var api = {
 
 // TODO 1
 // this function should accept a second argument, `keywords`
-function discoverMovies(callback) {
+function discoverMovies(callback, keywords) {
 
   // TODO 2 
   // ask the API for movies related to the keywords that were passed in above
@@ -38,10 +38,12 @@ function discoverMovies(callback) {
     url: api.root + "/discover/movie",
     data: {
       api_key: api.token,
+      with_keywords: keywords
     },
     success: function(response) {
       model.browseItems = response.results;
-      callback(response);
+      callback();
+
     }
   });
 }
@@ -59,9 +61,9 @@ function searchMovies(query, callback) {
   // change the url so that we search for keywords, not movies
 
 
+
   // TODO 4
   // when the response comes back, do all the tasks below:
-
 
   // TODO 4a
   // create a new variable called keywordIDs whose value is an array of all the
@@ -98,6 +100,13 @@ function searchMovies(query, callback) {
     },
     success: function(response) {
       console.log(response);
+      var keywordIDs=response.results.map(function(element){
+        return element.id;
+      });
+      console.log(keywordIDs);
+      var keywordsString=keywordIDs.join("|");
+      console.log(keywordsString);
+      discoverMovies(callback, keywordsString);
     }
   });
 }
@@ -177,6 +186,11 @@ function render() {
 
 // When the HTML document is ready, we call the discoverMovies function,
 // and pass the render function as its callback
+
+//the following codes just fill the page with random movies when start; the keywords parameter is optional
+//the codes that calls the "search by keyword" function is included in index.html file
 $(document).ready(function() {
   discoverMovies(render);
 });
+
+

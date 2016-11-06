@@ -44,7 +44,7 @@
             <div class="input-group">
               <input type="text" class="form-control" name="query"/>
               <span class="input-group-btn">
-                <input type="submit" class="btn btn-primary" value="Search By Title"/>
+                <input type="submit" class="btn btn-primary" value="Search By Topic"/>
               </span>
             </div>
           </form>
@@ -58,10 +58,12 @@
 
   <script src="js/flicklist.js"></script>
   <script>
+    //the following code could be moved to flicklist.js
     $("#form-search").submit(function(evt) {
       evt.preventDefault();
       var query = $("#form-search input[name=query]").val();
       searchMovies(query, render);
+
     });
   </script>
 
