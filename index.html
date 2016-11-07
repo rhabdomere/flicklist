@@ -12,6 +12,8 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css"/>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
   <title>FlickList</title>
 </head>
@@ -26,7 +28,7 @@
 
   <div class="main-content">
 
-    <section id="section-watchlist" class="col-md-5">
+    <section id="section-watchlist" class="col-md-12">
       <header>
         <h2>My Watchlist</h2>
         <hr/>
@@ -35,30 +37,74 @@
       <ul class="list-inline"></ul>
     </section>
 
-    <section id="section-browse" class="col-md-7">
+    <section id="section-browse" class="container-fluid">
+      <div class="row">
 
       <!-- TODO
       Rearrange the layout of this section using the Bootstrap grid system to match the specification 
       -->
 
-      <header>
-        <h2>Browse Movies</h2>
-      </header>
-      <form id="form-search">
-        <div class="input-group">
-          <input type="text" class="form-control" name="query"/>
-          <span class="input-group-btn">
+        <div class="col-md-8">
+          <div class="well">
+            <div class="row">
+
+
+                <div id="browse-info" class="col-md-7"></div>
+
+                <div class="col-md-5">
+
+                    <div id="browse-Carousel" class="carousel slide" data-ride="carousel">
+
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" role="listbox">
+
+                      </div>
+
+                      <!-- Left and right controls -->
+                      <div>
+                        <a class="left carousel-control" href="#browse-Carousel" role="button" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+
+                        <a class="right carousel-control" href="#browse-Carousel" role="button" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+
+                      </div>
+
+                      <button id="add-to-watchlist">Add to Watch list</button>
+           </div>
+          </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+          <header>
+            <h2>Browse Movies</h2>
+          </header>
+          <form id="form-search">
+            <div class="input-group">
+              <input type="text" class="form-control" name="query"/>
+              <span class="input-group-btn">
             <input type="submit" class="btn btn-primary" value="Search By Topic"/>
           </span>
-        </div>
-      </form>
+            </div>
+          </form>
 
-      <!-- 
-      TODO
-      implement a carousel inside this section
-      You can incorporate this <ul> as the .carousel-inner 
-      -->
-      <ul class="list-group"></ul>
+
+
+        </div>
+
+
+
+
+
+
+
+      </div>
 
     </section>
 
@@ -72,11 +118,15 @@
       searchMovies(query, render);
     });
 
-    $("#browse-carousel").on("slid.bs.carousel", function() {
+    $("#browse-Carousel").on("slid.bs.carousel", function() {
       console.log("the carousel just slid!");
-      var newIndex = $("#browse-carousel").find(".active").index();
+      var newIndex = $("#browse-Carousel").find(".active").index();
       // TODO 
       // update the model and then re-render
+
+      model.activeMovieIndex = newIndex;
+      console.log("the new index is ", newIndex);
+      render();
     });
   </script>
 
